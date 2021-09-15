@@ -6,7 +6,12 @@ function Cards({ repoInfo }) {
       <List>
         {repoInfo.map((item, index) => (
           <li key={index}>
-            <img src={item.organization.avatar_url} alt="logo" />
+            {item.organization ? (
+              <img src={item.organization.avatar_url} alt="logo" />
+            ) : (
+              <img src={item.owner.avatar_url} alt="logo" />
+            )}
+
             <h3>{item.full_name}</h3>
             <a href={item.html_url} target={"_blank"} rel="noreferrer">
               Ir para
